@@ -10,6 +10,7 @@ d.)  Add your project to your GitHub account (See the instructions from the mood
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -17,29 +18,46 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import palvelinohjelmointi.Bookstore.domain.Book;
+import palvelinohjelmointi.Bookstore.domain.BookRepository;
 
 
 @Controller
 public class BookController {
 	
-	//endpoint    http://localhost:8080/index
+	@Autowired
+	private BookRepository repository; //privaatti BookRepository nimeltään repository
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	//endpoint    http://localhost:8080/
 	
-	public String getStudentList(Model model) { 
-		
-		List<Book> books = new ArrayList<Book>(); 
-		books.add(new Book("Mihin tytöt kadonneet", "Leena Lehtolainen", 2001, "123kk89", 15.90));
-		books.add(new Book("Kyllikki Saari", "Teemu Keskisarja", 2021, "987hh67", 20.90));
-		
 
-		model.addAttribute("books", books); 
+
+	@RequestMapping(value = "/booklist")
 		
-		return "bookListTemplate";
+		public String getBookList(Model model) {
 	
+		model.addAttribute("books", repository.findAll()); 
+	
+	return "bookListTemplate";
 	
 	}
 }
+	
+	
+		
+		
+	
+	
+	
+

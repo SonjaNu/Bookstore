@@ -5,14 +5,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>The list of Books</h1>
+	<h1>Welcome to the Bookstore</h1>
+	</br>
+	<h2>The list of Books</h2>
 	<table>
 		<tr>
 			<th>Title</th>
 			<th>Author</th>
 			<th>Year</th>
 			<th>ISBN</th>
-			<th>price</th>
+			<th>Price</th>
 		</tr>
 
 		<tr th:each="book : ${books}">
@@ -21,7 +23,19 @@
 			<td th:text="${book.year}">year</td>
 			<td th:text="${book.isbn}">isbn</td>
 			<td th:text="${book.price}">price</td>
+			<td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>
 		</tr>
 	</table>
+	
+	 <a href="/add">Add Student</a> 
+	
+	<!--   <form method="get" action="#" th:action="index" th:object="${friend}">
+	<label>Title</label> <input type="text" th:field="${book.title}" />
+	<label>Author</label> <input type="text" th:field="${book.author}" />
+	<label>Year</label> <input type="text" th:field="${book.year}" />
+	<label>ISBN</label> <input type="text" th:field="${book.isbn}" />
+	<label>Price</label> <input type="text" th:field="${book.price}" />
+	<input type="submit" value="Send "/>
+	</form> -->
 </body>
 </html>
