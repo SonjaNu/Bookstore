@@ -8,21 +8,9 @@ b.)  Add a new controller called BookController which handle get request to the 
 c.)  Add a new model class called Book which contains attributes: title, author, year, isbn, price  
 d.)  Add your project to your GitHub account (See the instructions from the moodle) */
 
-import java.util.ArrayList;
-
-
-import java.util.List;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,11 +29,9 @@ public class BookController {
 	
 	//endpoint    http://localhost:8080/
 	
-
-
 	@RequestMapping(value = "/booklist")
 		
-		public String getBookList(Model model) {
+		public String bookList(Model model) {
 	
 		model.addAttribute("books", repository.findAll()); 
 	
