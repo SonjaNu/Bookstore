@@ -16,16 +16,7 @@ import palvelinohjelmointi.Bookstore.domain.BookRepository;
 import palvelinohjelmointi.Bookstore.domain.Category;
 import palvelinohjelmointi.Bookstore.domain.CategoryRepository;
 
-/*2.  List and Add Categories  
- 
-a) Create a template called categorylist.html which shows all categories from the database in 
-html table.  
-b) To show the categories you have to add  a new CategoryController and a method to that 
-handle GET request from endpoint like /categorylist. 
-c) Add Create functionality for Category to your Bookstore. For create functionality add new 
-thymeleaf template like addcategory.html/newcategoryform.html/etc. 
- 
-.    Push all changes to GitHub*/
+
 @SpringBootApplication
 
 public class BookstoreApplication {
@@ -35,6 +26,10 @@ public class BookstoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
+	
+	/*b) Change a creation of book examples on CommandLineRunner. Save all books with category 
+information to the database. 
+c) Add Category into book listpage to show category name of the book*/
 	
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository categoryRepository) { //luo testidataa
@@ -50,8 +45,8 @@ public class BookstoreApplication {
 			categoryRepository.save(category4);
 			
 			log.info("save a couple of books");
-			repository.save(new Book("Eikä yksikään pelastunut", "Agatha Christie", 1993, "bb876567", 9.50));
-			repository.save(new Book("Rivo satakieli", "Leena Lehtolainen", 2000, "bb789064", 15.90));	
+			repository.save(new Book("Eikä yksikään pelastunut", "Agatha Christie", 1993, "bb876567", 9.50, category1));
+			repository.save(new Book("Rivo satakieli", "Leena Lehtolainen", 2000, "bb789064", 15.90, category1));	
 			
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {

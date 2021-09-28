@@ -2,24 +2,34 @@ package palvelinohjelmointi.Bookstore.domain;
 import javax.persistence.Entity;
 
 
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import palvelinohjelmointi.Bookstore.domain.Category;
 
 @Entity
 public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String title;
 	private String author;
 	private int year;
 	private String isbn;
 	private double price;
 	
+	 @ManyToOne  //yhteystyyppi kahden tietokantataulun välillä
+	    //many on Book-luokka ja One on Category (private Category category;) (One on lähin alla oleva attribuutti)
+	    @JoinColumn(name = "categoryId") //FK, viiteavain-attribuutin (viiteavainsarakkeen) nimi on categoryId
+	    private Category category;
+	
 	 public Book() {}
 	
-	public Book(String title, String author, int year, String isbn, double price) {
+	public Book(String title, String author, int year, String isbn, double price, Category category) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -75,11 +85,27 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+		
+		if (this.category != null) {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
+				+ " category =" + this.getCategory() + "]";
+		}else {
+			return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price +"]";
+		
+	}
+	}
 	}
 
-}
+

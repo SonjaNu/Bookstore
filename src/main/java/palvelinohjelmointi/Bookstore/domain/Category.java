@@ -3,6 +3,7 @@ package palvelinohjelmointi.Bookstore.domain;
 import javax.persistence.Entity;
 
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
 import palvelinohjelmointi.Bookstore.domain.Book;
+
+
 
 @Entity
 public class Category {
@@ -23,9 +27,8 @@ public class Category {
 		private Long categoryId;
 		private String name;
 		
-//		@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-//		//   Category (luokan nimi siis)   @OneToMany    Book (heti alapuolella oleva javarakenne)
-//		private List<Book> books;
+		@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+		private List<Book> books;
 		
 		
 public Category() {}
@@ -54,6 +57,14 @@ public String getName() {
 
 public void setName(String name) {
 	this.name = name;
+}
+
+public List<Book> getBooks() {
+	return books;
+}
+
+public void setStudents(List<Book> books) {
+	this.books = books;
 }
 
 
