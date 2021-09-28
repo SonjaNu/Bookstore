@@ -16,6 +16,16 @@ import palvelinohjelmointi.Bookstore.domain.BookRepository;
 import palvelinohjelmointi.Bookstore.domain.Category;
 import palvelinohjelmointi.Bookstore.domain.CategoryRepository;
 
+/*2.  List and Add Categories  
+ 
+a) Create a template called categorylist.html which shows all categories from the database in 
+html table.  
+b) To show the categories you have to add  a new CategoryController and a method to that 
+handle GET request from endpoint like /categorylist. 
+c) Add Create functionality for Category to your Bookstore. For create functionality add new 
+thymeleaf template like addcategory.html/newcategoryform.html/etc. 
+ 
+.    Push all changes to GitHub*/
 @SpringBootApplication
 
 public class BookstoreApplication {
