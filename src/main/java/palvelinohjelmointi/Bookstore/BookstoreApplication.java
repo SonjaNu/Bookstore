@@ -15,6 +15,8 @@ import palvelinohjelmointi.Bookstore.domain.Book;
 import palvelinohjelmointi.Bookstore.domain.BookRepository;
 import palvelinohjelmointi.Bookstore.domain.Category;
 import palvelinohjelmointi.Bookstore.domain.CategoryRepository;
+import palvelinohjelmointi.Bookstore.domain.User;
+import palvelinohjelmointi.Bookstore.domain.UserRepository;
 
 
 @SpringBootApplication
@@ -32,7 +34,7 @@ information to the database.
 c) Add Category into book listpage to show category name of the book*/
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository categoryRepository) { //luo testidataa
+	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository categoryRepository, UserRepository userRepository) { //luo testidataa
 		return (args) -> {
 			
 			Category category1 = new Category("Dekkarit");
@@ -45,6 +47,7 @@ c) Add Category into book listpage to show category name of the book*/
 			categoryRepository.save(category4);
 			
 			log.info("save a couple of books");
+			
 			repository.save(new Book("Eikä yksikään pelastunut", "Agatha Christie", 1993, "bb876567", 9.50, category1));
 			repository.save(new Book("Rivo satakieli", "Leena Lehtolainen", 2000, "bb789064", 15.90, category1));	
 			
@@ -57,6 +60,13 @@ c) Add Category into book listpage to show category name of the book*/
 			for (Category category : categoryRepository.findAll()) {
 				log.info(category.toString());
 			}
+			
+			User user1 = new User("user", 
+					"$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+					User user2 = new User("admin", 
+					"$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+					userRepository.save(user1);
+				    userRepository.save(user2);
 
 		};
 	}

@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import palvelinohjelmointi.Bookstore.domain.Book;
 
@@ -28,6 +29,7 @@ public class Category {
 		private String name;
 		
 		@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+		@JsonIgnoreProperties("category")
 		private List<Book> books;
 		
 		
@@ -70,6 +72,6 @@ public void setStudents(List<Book> books) {
 
 @Override
 public String toString() {
-	return "Category [categoryId=" + categoryId + ", name=" + name + "]";
+	return "Category [id=" + categoryId + ", name=" + name + "]";
 }
 }

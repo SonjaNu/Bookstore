@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import palvelinohjelmointi.Bookstore.domain.Category;
 
 @Entity
@@ -24,7 +26,8 @@ public class Book {
 	
 	 @ManyToOne  //yhteystyyppi kahden tietokantataulun välillä
 	    //many on Book-luokka ja One on Category (private Category category;) (One on lähin alla oleva attribuutti)
-	    @JoinColumn(name = "categoryId") //FK, viiteavain-attribuutin (viiteavainsarakkeen) nimi on categoryId
+	 @JsonIgnoreProperties ("books")    
+	 @JoinColumn(name = "categoryId") //FK, viiteavain-attribuutin (viiteavainsarakkeen) nimi on categoryId
 	    private Category category;
 	
 	 public Book() {}
@@ -36,6 +39,7 @@ public class Book {
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
+		this.category = category;
 	}
 	
 	public Long getId() {
