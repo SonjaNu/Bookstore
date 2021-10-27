@@ -27,6 +27,12 @@
 			<label for="price">Price</label>
 			<input type="text" th:field="*{price}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="category">Category</label>
+			<input type="text" th:field="*{category.name}" />
+			<input type="text" th:field="*{category.categoryId}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
 			<input type="submit" value="Save"></input>
 		</form>
 	</div>
