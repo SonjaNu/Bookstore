@@ -1,22 +1,17 @@
 package palvelinohjelmointi.Bookstore.domain;
 
-import javax.persistence.Entity;
-
 
 
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import palvelinohjelmointi.Bookstore.domain.Book;
 
 
@@ -65,13 +60,13 @@ public List<Book> getBooks() {
 	return books;
 }
 
-public void setStudents(List<Book> books) {
+public void setBooks(List<Book> books) {
 	this.books = books;
 }
 
 
 @Override
 public String toString() {
-	return "Category [id=" + categoryId + ", name=" + name + "]";
+	return "Category [categoryId=" + categoryId + ", name=" + name + "]";
 }
 }

@@ -1,8 +1,6 @@
 package palvelinohjelmointi.Bookstore.domain;
 import javax.persistence.Entity;
-
-
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -102,13 +100,13 @@ public class Book {
 	@Override
 	public String toString() {
 		
-		if (this.category != null) {
+		if (this.category != null) 
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
 				+ " category =" + this.getCategory() + "]";
-		}else {
+		else 
 			return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price +"]";
 		
-	}
+	
 	}
 	}
 
